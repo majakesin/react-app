@@ -1,14 +1,28 @@
 import "./App.css";
 import React, { useEffect, useState } from "react";
-import store from "./redux/store";
 import Card from "./components/card";
+import store from "./redux/store";
 import { User } from "./components/users";
 import { useDispatch, useSelector } from "react-redux";
-import CreateCardFormikExample from './components/formik/createCardFormikExample';
-import CreateCardYupExample from './components/yup/createCardYupExample'
+import CreateCardFormikExample from "./components/formik/createCardFormikExample";
+import CreateCardYupExample from "./components/yup/createCardYupExample";
+import { createSelector } from "reselect";
+import { getUserRequest } from "./redux/actions";
 
 function App() {
-  const dispatch = useDispatch();
+  /* verzija sa reselctom, vraca mi sve da je undifined :)
+  const selfSelector = (state) => state;
+  const cards = createSelector(
+    [selfSelector],
+    (selfSelector) => selfSelector.cards
+  );
+  const users = createSelector(
+    [selfSelector],
+    (selfSelector) => selfSelector.users
+  );
+
+  console.log("cards" + cards);
+  console.log(users); */
 
   const [cards, setCards] = useState(store.getState().cards);
 
@@ -17,9 +31,7 @@ function App() {
   });
   const users = useSelector((state) => state.users);
 
-  useEffect(() => {
-    dispatch({ type: "GET_USER_REQUESTED", payload: users });
-  });
+  useEffect(getUserRequest(useDispatch(), users));
 
   return (
     <div>
@@ -29,9 +41,10 @@ function App() {
           <CreateCardYupExample></CreateCardYupExample>
         </div>
         <div className="row">
-          {cards.map((element) => (
-            <Card props={element} key={element.id}></Card>
-          ))}
+          {cards.length > 0 &&
+            cards.cards.map((element) => (
+              <Card props={element} key={element.id}></Card>
+            ))}
         </div>
         <div className="column">
           {users.length > 0 &&
