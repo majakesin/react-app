@@ -5,9 +5,6 @@ import { DeleteCard } from '../redux/actions';
 
 function Card (props) {
 
-  
-        console.log(props)
-        console.log(props.props.title)
         
         return(
             <div className="row">
