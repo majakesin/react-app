@@ -4,7 +4,8 @@ import store from "./redux/store";
 import Card from "./components/card";
 import { User } from "./components/users";
 import { useDispatch, useSelector } from "react-redux";
-import CreateCardFormikExample from './components/createCardFormikExample';
+import CreateCardFormikExample from './components/formik/createCardFormikExample';
+import CreateCardYupExample from './components/yup/createCardYupExample'
 
 function App() {
   const dispatch = useDispatch();
@@ -25,6 +26,7 @@ function App() {
       <div className="justify-content-center column" style={{ margin: "10px" }}>
         <div className="justify content-center row">
           <CreateCardFormikExample></CreateCardFormikExample>
+          <CreateCardYupExample></CreateCardYupExample>
         </div>
         <div className="row">
           {cards.map((element) => (

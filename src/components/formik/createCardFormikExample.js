@@ -1,6 +1,6 @@
 import React from "react";
 import { Formik } from "formik";
-import { CreateNewCard } from "../redux/actions";
+import { CreateNewCard } from "../../redux/actions";
 
 const CreateCardFormikExample =() => {
     return (
