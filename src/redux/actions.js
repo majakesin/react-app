@@ -1,4 +1,8 @@
 import store from "./store";
+<<<<<<< Updated upstream
+=======
+import * as types from "./types";
+>>>>>>> Stashed changes
 
 export let CreateNewCard = (title, subtitle, description) => {
   store.dispatch({
@@ -13,3 +17,10 @@ export let DeleteCard = (id) => {
     payload: { id: id },
   });
 };
+<<<<<<< Updated upstream
+=======
+
+export function GetUserRequest(users) {
+  return { type: types.GET_USER_REQUESTED, payload: users };
+}
+>>>>>>> Stashed changes
