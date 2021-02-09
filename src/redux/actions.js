@@ -1,26 +1,20 @@
 import store from "./store";
-<<<<<<< Updated upstream
-=======
 import * as types from "./types";
->>>>>>> Stashed changes
 
 export let CreateNewCard = (title, subtitle, description) => {
   store.dispatch({
-    type: "CARD_ADD",
+    type: types.CARD_ADDED,
     payload: { title: title, subtitle: subtitle, description: description },
   });
 };
 
 export let DeleteCard = (id) => {
   store.dispatch({
-    type: "CARD_DELETED",
+    type: types.CARD_DELETED,
     payload: { id: id },
   });
 };
-<<<<<<< Updated upstream
-=======
 
 export function GetUserRequest(users) {
   return { type: types.GET_USER_REQUESTED, payload: users };
 }
->>>>>>> Stashed changes
