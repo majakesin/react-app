@@ -1,8 +1,8 @@
 import React from "react";
-import { Formik } from "formik";
+import { Formik, Form, Field } from "formik";
 import { CreateNewCard } from "../../redux/actions";
 import CardShema from "../yup/yupValidation";
-
+import CustomInputComponent from "./formikComponents/formikInput";
 const FormikYupExample = () => {
   return (
     <Formik
@@ -17,54 +17,27 @@ const FormikYupExample = () => {
         values,
         errors,
         touched,
-        handleChange,
-        handleBlur,
-        handleSubmit,
         isSubmitting,
         /* and other goodies */
       }) => (
-        <form onSubmit={handleSubmit}>
-          <input
-            type="text"
+        <Form>
+          <Field
             name="title"
-            className="form-control"
-            value={values.title}
-            placeholder="Title"
-            onChange={handleChange}
-            onBlur={handleBlur}
-          ></input>
-          {errors.title && touched.title && errors.title}
-
-          <input
-            type="text"
+            component={CustomInputComponent}
+            placeholder="title"
+          ></Field>
+          <Field
             name="subtitle"
-            className="form-control"
-            placeholder="Subtitle"
-            value={values.subtitle}
-            onChange={handleChange}
-            onBlur={handleBlur}
-          ></input>
-          {errors.subtitle && touched.subtitle && errors.subtitle}
-
-          <input
-            type="text"
+            component={CustomInputComponent}
+            placeholder="subtitle"
+          ></Field>
+          <Field
             name="description"
-            className="form-control"
-            placeholder="Description"
-            value={values.description}
-            onChange={handleChange}
-            onBlur={handleBlur}
-          ></input>
-          {errors.description && touched.description && errors.description}
-
-          <button
-            type="submit"
-            className="btn btn-danger"
-            disabled={isSubmitting}
-          >
-            Dodaj
-          </button>
-        </form>
+            component={CustomInputComponent}
+            placeholder="description"
+          ></Field>
+          <button type="submit">Submit</button>
+        </Form>
       )}
     </Formik>
   );
